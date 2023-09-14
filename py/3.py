@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Thu Sep  7 22:56:34 2023
+Created on Thu Sep 14 16:39:12 2023
 
 @author: pr5
 """
@@ -23,25 +23,30 @@ visited = []
 queue = []
 
 
-def bfs(visited: list, graph: dict, query: str, entry_node='1'):
+def dfs(visited: list, graph: dict, query: str, entry_node='1'):
     visited.append(entry_node)
     queue.append(entry_node)
 
     while queue:
         m = queue.pop(0)
-        print(f"Currently in node {m}")
-        if(m==query):
+        visited.append(m)
+        print(f"Currently at node {m}")
+        if (m == query):
             print("FOUND")
             break
-        for neighbour_node in graph[m]:
-            if neighbour_node not in visited:
-                visited.append(neighbour_node)
-                queue.append(neighbour_node)
+        neighbours = [neighbour for neighbour in graph[m]
+                      if (neighbour not in visited)]
+        if neighbours != []:
+            queue.append(neighbours[0])
+        else:
+            queue.append(visited[-1])
+            
+        
 
 
 e = input("Enter entry point to graph: ")
 q = input("Enter graph node to find: ")
 try:
-    bfs(visited, graph, q, e)
+    dfs(visited, graph, q, e)
 except:
     print("no such point on graph or invalid query")
