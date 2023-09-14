@@ -10,26 +10,10 @@ from random import randint as ran
 
 mass = [ran(1, 100) for i in range(20)]
 mass.sort()
-# kostil=int(0)
 
 print("generated:", mass)
 
 query = int(input("Enter your query: "))
-"""
-nested statements hell >_<
-def binary_search(mass:list,query:int):
-    mid = len(mass)//2
-    if mass:
-        if mass[mid]!=query:
-            if mass[mid]<query:
-                return binary_search(mass[mid:], query)
-            else:
-                return binary_search(mass[:mid], query)
-        else:
-            return mid+len(mass[:mid])
-    else:
-        return -1
-"""
 
 
 def binary_search(mass: list, query: int):
