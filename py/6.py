@@ -1,24 +1,26 @@
-def heapify(arr, n, i):
-    largest = i
-    left = 2 * i + 1
-    right = 2 * i + 2
-    if left < n and arr[i] < arr[left]:
-        largest = left
-    if right < n and arr[largest] < arr[right]:
-        largest = right
-    if largest != i:
-        arr[i], arr[largest] = arr[largest], arr[i]  
-        heapify(arr, n, largest)
-
-
+"""
+import heapq,random
 def heap_sort(arr):
-    n = len(arr)
-    for i in range(n // 2 - 1, -1, -1):
-        heapify(arr, n, i)
-    for i in range(n - 1, 0, -1):
-        arr[i], arr[0] = arr[0], arr[i] 
-        heapify(arr, i, 0)
-    return arr
-arr = [12, 11, 13, 5, 6, 7]
-sorted_arr = heap_sort(arr)
-print(sorted_arr)
+    heapq.heapify(arr)
+    print("heaped:",arr)
+    result = []
+    while arr:
+        result.append(heapq.heappop(arr))
+        print("state:", result)   
+    return result
+arr = [random.randint(0,10) for x in range(10)]
+print("got:", arr)
+print("sorted:", heap_sort(arr))
+"""
+import heapq,random
+def heap_sort(arr):
+    arr.sort()
+    print("heaped:",arr)
+    result = []
+    while arr:
+        result.append(arr.pop(0))
+        print("state:", result)   
+    return result
+arr = [random.randint(0,10) for x in range(10)]
+print("got:", arr)
+print("sorted:", heap_sort(arr))
