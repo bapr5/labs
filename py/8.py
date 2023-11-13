@@ -10,7 +10,7 @@ def floyd_warshall(graph):
 graph = [[0, 5, INF, 10],
          [INF, 0, 3, INF],
          [INF, INF, 0, 1],
-         [INF, INF, INF, 0]]
+         [1, INF, INF, 0]]
 distances = floyd_warshall(graph)
 for row in distances:
     print(row)
