@@ -1,10 +1,12 @@
 #include <stdio.h>
 //#include <conio.h>
 #include <curses.h>
+#include <termios.h>
 
 #define TRUE 1
 
 int main(){
+    char c;
     const unsigned DIM = 10;
     double A[DIM] [ DIM];
     unsigned n,m,i,j,i_max,j_max;
@@ -33,6 +35,6 @@ int main(){
    }
    printf("Maximum element A[%d,%d] = %8.41f",i_max,j_max,A[i_max][j_max]);
    printf("Any key to exit");
-   getch();
+   c = getch();
    return 0;
 }
